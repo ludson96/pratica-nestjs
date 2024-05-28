@@ -13,7 +13,6 @@ export class UserController {
 
   @Get('/findByName')
   findByName(@Query('name') name: string) {
-    // Adiciona o nome da query
     return `Seu nome é: ${JSON.stringify(name)}`;
   }
 
