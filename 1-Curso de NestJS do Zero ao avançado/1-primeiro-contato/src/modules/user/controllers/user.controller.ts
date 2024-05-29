@@ -1,23 +1,18 @@
-import { Controller, Get, Param, Query } from '@nestjs/common';
-
-interface ParamsUser {
-  id: string;
-}
+import { Body, Controller, Get, Post } from '@nestjs/common';
+import { CreatedUserDto } from '../dto/create-user.dto';
+import { UserService } from '../services/user.service';
 
 @Controller('/users')
 export class UserController {
+  constructor(private readonly userService: UserService) {}
+
+  @Post()
+  async createUser(@Body() data: CreatedUserDto) {
+    return await this.userService.createUser(data);
+  }
+
   @Get()
-  helloMommy() {
-    return 'Retornando todos os usuários.';
-  }
-
-  @Get('/findByName')
-  findByName(@Query('name') name: string) {
-    return `Seu nome é: ${JSON.stringify(name)}`;
-  }
-
-  @Get('/:id')
-  findById(@Param() params: ParamsUser) {
-    return `O seu ID é: ${params.id}`;
+  async getAllUsers() {
+    return await this.userService.getAllUsers();
   }
 }
