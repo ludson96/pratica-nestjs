@@ -3,7 +3,7 @@ services:
     image: postgres:latest  # Usa a imagem oficial do PostgreSQL
     container_name: postgres_container  # Nome do container
     environment:
-      POSTGRES_DB: todonest  # Nome do banco de dados
+      POSTGRES_DB: todo_nest  # Nome do banco de dados
       POSTGRES_USER: admin  # Usuário do banco de dados
       POSTGRES_PASSWORD: admin  # Senha do usuário
       POSTGRES_PASSWORD_ROOT: admin
