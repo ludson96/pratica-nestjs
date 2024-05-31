@@ -4,11 +4,11 @@ import {
   Injectable,
   PipeTransform,
 } from '@nestjs/common';
-import { CreatedUserDto } from '../dto/create-user.dto';
+import { CreateUserDto } from '../dto/user.dto';
 
 @Injectable()
 export class CreateUserValidationPipe implements PipeTransform {
-  transform(value: CreatedUserDto) {
+  transform(value: CreateUserDto) {
     if (!value.name || !value.username || !value.password || !value.email) {
       throw new HttpException(
         'email é requerido',

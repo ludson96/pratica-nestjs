@@ -1,5 +1,5 @@
 import { Body, Controller, Get, Post, UsePipes } from '@nestjs/common';
-import { CreatedUserDto } from '../dto/create-user.dto';
+import { CreateUserDto } from '../dto/user.dto';
 import { UserService } from '../services/user.service';
 import { CreateUserValidationPipe } from '../pipe/create-user.validation.pipe';
 
@@ -9,12 +9,12 @@ export class UserController {
 
   @Post()
   @UsePipes(new CreateUserValidationPipe())
-  async createUser(@Body() data: CreatedUserDto) {
+  async createUser(@Body() data: CreateUserDto) {
     return await this.userService.createUser(data);
   }
 
-  @Get()
-  async getAllUsers() {
-    return await this.userService.getAllUsers();
-  }
+  // @Get()
+  // async getAllUsers() {
+  //   return await this.userService.getAllUsers();
+  // }
 }
