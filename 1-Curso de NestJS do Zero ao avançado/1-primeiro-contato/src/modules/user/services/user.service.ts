@@ -24,4 +24,8 @@ export class UserService {
       password,
     });
   }
+
+  async getUser(id: string) {
+    this.userRepository.findById(id);
+  }
 }

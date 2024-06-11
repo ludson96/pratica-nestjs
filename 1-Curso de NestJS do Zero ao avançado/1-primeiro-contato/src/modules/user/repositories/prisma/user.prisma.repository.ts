@@ -27,7 +27,14 @@ export class UserPrismaRepository implements IUserRepository {
       },
     });
   }
+
   async save(data: CreateUserDto): Promise<ResponseUserDto> {
     return await this.prisma.users.create({ data });
+  }
+
+  async findById(id: string): Promise<ResponseUserDto> {
+    return await this.prisma.users.findUnique({
+      where: { id },
+    });
   }
 }
