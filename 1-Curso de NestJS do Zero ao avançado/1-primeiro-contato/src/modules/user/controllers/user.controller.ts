@@ -25,7 +25,6 @@ export class UserController {
   @Get('/profile')
   @UseGuards(AuthGuard)
   async profile(@Request() req) {
-    this.userService.getUser(req.user.sub);
-    // return await this.userService.getAllUsers();
+    return this.userService.getUser(req.user.sub);
   }
 }
