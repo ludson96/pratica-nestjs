@@ -5,20 +5,20 @@ import {
   Post,
   Request,
   UseGuards,
-  UsePipes,
+  // UsePipes,
 } from '@nestjs/common';
-import { CreateUserDto } from '../dto/user.dto';
 import { UserService } from '../services/user.service';
-import { CreateUserValidationPipe } from '../pipe/create-user.validation.pipe';
+// import { CreateUserValidationPipe } from '../pipe/create-user.validation.pipe';
 import { AuthGuard } from 'src/infra/providers/auth-guard.providers';
+import { CreateUserSchemaDto } from '../schemas/create-user.schema';
 
 @Controller('/users')
 export class UserController {
   constructor(private readonly userService: UserService) {}
 
   @Post()
-  @UsePipes(new CreateUserValidationPipe())
-  async createUser(@Body() data: CreateUserDto) {
+  // @UsePipes(new CreateUserValidationPipe())
+  async createUser(@Body() data: CreateUserSchemaDto) {
     return await this.userService.createUser(data);
   }
 
