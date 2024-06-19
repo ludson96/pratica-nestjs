@@ -14,13 +14,37 @@ datasource db {
 }
 
 model Users {
-  id String @id @default(uuid())
-  name String
-  username String @unique
-  password String
-  email String @unique
-
-  createdAt DateTime @default(now())
+  id        String     @id @default(uuid())
+  name      String
+  username  String     @unique
+  password  String
+  email     String     @unique
+  createdAt DateTime   @default(now())
+  TaskUser  TaskUser[]
 
   @@map("users")
+}
+
+model Tasks {
+  id          String     @id @default(uuid())
+  title       String     @unique
+  description String
+  startAt     DateTime
+  endAt       DateTime
+  priority    String
+  status      String
+  TaskUser    TaskUser[]
+
+  @@map("tasks")
+}
+
+model TaskUser {
+  id        String   @id @default(uuid())
+  task      Tasks    @relation(fields: [tasksId], references: [id])
+  user      Users    @relation(fields: [usersId], references: [id])
+  tasksId   String
+  usersId   String
+  createdAt DateTime @default(now())
+
+  @@map("tasks_users")
 }

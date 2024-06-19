@@ -3,9 +3,10 @@ import { UserModule } from './modules/users/user.module';
 import { LoginModule } from './modules/login/login.module';
 import { APP_PIPE } from '@nestjs/core';
 import { ZodValidationPipe } from '@anatine/zod-nestjs';
+import { TaskModule } from './modules/tasks/task.module';
 
 @Module({
-  imports: [UserModule, LoginModule],
+  imports: [UserModule, LoginModule, TaskModule],
   controllers: [],
   providers: [
     {
