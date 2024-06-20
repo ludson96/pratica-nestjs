@@ -1,15 +1,16 @@
-export type CreateTaskDto = {
+export type TaskUserRequestDTO = {
+  userId: string;
   title: string;
   description: string;
-  priority: string;
-  status: string;
-};
-
-export type ResponseTaskDto = {
-  id: string;
   startAt: Date;
   endAt: Date;
-} & CreateTaskDto;
+  priority: 'BAIXA' | 'MEDIA' | 'ALTA';
+  status: 'PENDENTE' | 'ANDAMENTO' | 'CONCLUIDA';
+};
+
+export type TaskUserResponseDTO = {
+  id: string;
+};
 
 export type Title = {
   title: string;
