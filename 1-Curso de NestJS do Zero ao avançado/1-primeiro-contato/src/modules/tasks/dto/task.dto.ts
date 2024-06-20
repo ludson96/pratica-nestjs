@@ -10,3 +10,7 @@ export type ResponseTaskDto = {
   startAt: Date;
   endAt: Date;
 } & CreateTaskDto;
+
+export type Title = {
+  title: string;
+};
