@@ -7,14 +7,6 @@ import { TaskUserResponseDTO, TaskUserRequestDTO } from '../../dto/task.dto';
 export class TaskUserPrismaRepository implements ITaskUserRepository {
   constructor(private prisma: PrismaService) {}
 
-  // async findByTitle(data: Title): Promise<ResponseTaskDto | null> {
-  //   return await this.prisma.tasks.findFirst({
-  //     where: {
-  //       title: data.title,
-  //     },
-  //   });
-  // }
-
   async save(data: TaskUserRequestDTO): Promise<TaskUserResponseDTO> {
     return this.prisma.taskUser.create({
       data: {
@@ -36,8 +28,4 @@ export class TaskUserPrismaRepository implements ITaskUserRepository {
       },
     });
   }
-
-  // async findById(id: string): Promise<ResponseTaskDto | null> {
-  //   return await this.prisma.tasks.findUnique({ where: { id } });
-  // }
 }
