@@ -23,3 +23,8 @@ export type FileDto = {
   buffer: Buffer;
   size: number;
 };
+
+export type AvatarDto = {
+  idUser: string;
+  file: FileDto;
+};

@@ -4,6 +4,8 @@ import { UserService } from './services/user.service';
 import { PrismaService } from 'src/infra/database/prisma.service';
 import { IUserRepository } from './repositories/user.repository';
 import { UserPrismaRepository } from './repositories/prisma/user.prisma.repository';
+import { IStorate } from 'src/infra/providers/storage/storage';
+import { SupabaseStorage } from 'src/infra/providers/storage/supabase.storage';
 
 @Module({
   imports: [],
@@ -14,6 +16,10 @@ import { UserPrismaRepository } from './repositories/prisma/user.prisma.reposito
     {
       provide: IUserRepository,
       useClass: UserPrismaRepository,
+    },
+    {
+      provide: IStorate,
+      useClass: SupabaseStorage,
     },
   ],
 })

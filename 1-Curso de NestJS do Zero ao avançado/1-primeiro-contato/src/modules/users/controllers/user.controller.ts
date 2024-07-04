@@ -3,6 +3,7 @@ import {
   Controller,
   Get,
   Post,
+  Put,
   Request,
   UploadedFile,
   UseGuards,
@@ -33,8 +34,15 @@ export class UserController {
     return await this.userService.getUserById(req.user.sub);
   }
 
-  @Post('/avatar')
+  @Put('/avatar')
   @UseGuards(AuthGuard)
   @UseInterceptors(FileInterceptor('file'))
-  async uploadAvatar(@Request() req, @UploadedFile() file: FileDto) {}
+  async uploadAvatar(@Request() req, @UploadedFile() file: FileDto) {
+    const avatar = this.userService.uploadAvatar({
+      file,
+      idUser: req.user.sub,
+    });
+
+    return avatar;
+  }
 }
