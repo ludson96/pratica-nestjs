@@ -39,6 +39,10 @@ export class UserService {
     const tranformName = `${data.idUser}${extFile}`;
     data.file.originalname = tranformName;
     const file = await this.storage.upload(data.file, 'avatar');
+    await this.userRepository.uploadAvatar(
+      data.idUser,
+      `avatar/${data.file.originalname}`,
+    );
     return file;
   }
 }
