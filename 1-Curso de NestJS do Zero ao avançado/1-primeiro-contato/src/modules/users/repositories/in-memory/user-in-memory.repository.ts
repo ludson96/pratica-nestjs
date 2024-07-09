@@ -22,7 +22,7 @@ export class UserInMemoryRepository extends IUserRepository {
   async save(data: CreateUserDto): Promise<ResponseUserDto> {
     const user: ResponseUserDto = {
       ...data,
-      id: randomUUID(),
+      id: '1',
       createdAt: new Date(),
     };
 
@@ -30,8 +30,11 @@ export class UserInMemoryRepository extends IUserRepository {
 
     return user;
   }
-  findById(id: string): Promise<ResponseUserDto | null> {
-    throw new Error('Method not implemented.');
+
+  async findById(id: string): Promise<ResponseUserDto | null> {
+    const findUser = this.users.find((user) => user.id === id);
+
+    return findUser ?? null;
   }
   uploadAvatar(id: string, path: string): Promise<void> {
     throw new Error('Method not implemented.');
